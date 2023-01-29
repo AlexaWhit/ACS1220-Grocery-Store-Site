@@ -21,18 +21,22 @@
 <h2>Edit Store</h2>
 
 <form method="POST" action="{{ url_for('main.new_store') }}">
+  {{ form.csrf_token }}
   <fieldset>
     <legend>Please update the store information here:</legend>
 
-    {{ form.title.label }} {{ form.title }}
+    {{ form.title.label }} 
+    {{ form.title }}
 
     <ul>
-      {% for error in form.title.errors %}
+      {% for error in form.errors %}
       <li class="error">{{ error }}</li>
       {% endfor %}
     </ul>
 
-    {{ form.address.label }} {{ form.address }} {{ form.submit }}
+    {{ form.address.label }} 
+    {{ form.address }} 
+    {{ form.submit }}
   </fieldset>
 </form>
 

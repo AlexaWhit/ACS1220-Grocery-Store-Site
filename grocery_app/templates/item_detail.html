@@ -15,16 +15,30 @@
 <h2>Edit Item</h2>
 
 <form>
+    {{ form.csrf_token }}
     <fieldset>
-        <legend>Please enter your information:</legend>
+        <legend>Please update the item information:</legend>
+        {{ form.name.label }} {{ form.name }}
 
-
-
-        <!-- TODO: Remove the next paragraph and use the `form` object passed in 
-            from the route to render a form. -->
-        <p><em>Form fields go here!</em></p>
-
-        <input type="submit" value="Submit">
+        <ul>
+          {% for error in form.errors %}
+          <li class="error">{{ error }}</li>
+          {% endfor %}
+        </ul>
+    
+        {{ form.price.label }} 
+        {{ form.price }} 
+        
+        {{ form.category.label }} 
+        {{ form.category }} 
+        
+        {{ form.photo_url.label }} 
+        {{ form.photo_url }} 
+        
+        {{form.store.label }} 
+        {{ form.store }} 
+        
+        {{ form.submit }}
     </fieldset>
 </form>
 

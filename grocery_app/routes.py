@@ -115,7 +115,7 @@ def item_detail(item_id):
         db.session.commit()
 
         flash('Good News! The item was UPDATED successfully.')
-        return redirect(url_for('main.item_detail', item_id=item.id))
+        return redirect(url_for('main.item_detail', item_id=updated_item.id))
 
     # TODO: Send the form to the template and use it to render the form fields
     item = GroceryItem.query.get(item_id)
