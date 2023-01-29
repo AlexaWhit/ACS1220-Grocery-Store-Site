@@ -35,12 +35,10 @@ def new_store():
         )
         db.session.add(new_store)
         db.session.commit()
-        print("Store added to db")
+    
         flash('Success! The new STORE was created successfully.')
-        return redirect(url_for('main.homepage'))
-    else:
-        print(form.validate_on_submit())
-        print("NOT WORKING")
+        return redirect(url_for('main.store_detail', store_id=new_store.id))
+
     # TODO: Send the form to the template and use it to render the form fields
     return render_template('new_store.html', form=form)
 
@@ -58,7 +56,7 @@ def new_item():
             name=form.name.data,
             price=form.price.data,
             category =form.category.data,
-            photo=form.photo_url.data,
+            photo_url=form.photo_url.data,
             store=form.store.data,
         )
         db.session.add(new_item)
@@ -68,7 +66,7 @@ def new_item():
         return redirect(url_for('main.item_detail', item_id=new_item.id))
 
     # TODO: Send the form to the template and use it to render the form fields
-    return render_template('new_item.html')
+    return render_template('new_item.html', form=form)
 
 @main.route('/store/<store_id>', methods=['GET', 'POST'])
 def store_detail(store_id):
