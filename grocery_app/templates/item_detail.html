@@ -5,7 +5,7 @@
 
 <p><img src="{{ item.photo_url }}" width="250px" height="250px"></p>
 
-<p><strong>Price:</strong> {{ item.price }}</p>
+<p><strong>Price: $</strong> {{ item.price }}</p>
 
 <p><strong>Category:</strong> {{ item.category }}</p>
 
@@ -27,7 +27,7 @@
         </ul>
     
         {{ form.price.label }} 
-        {{ form.price }} 
+        ${{ form.price }} 
         
         {{ form.category.label }} 
         {{ form.category }} 
