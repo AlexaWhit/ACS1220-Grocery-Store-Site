@@ -1,3 +1,4 @@
+import os
 from flask import Blueprint, request, render_template, redirect, url_for, flash
 from datetime import date, datetime
 from grocery_app.models import GroceryStore, GroceryItem, ItemCategory
@@ -30,13 +31,16 @@ def new_store():
     if form.validate_on_submit():
         new_store = GroceryStore(
             title=form.title.data,
-            address=form.address.data,
+            address=form.address.data
         )
         db.session.add(new_store)
         db.session.commit()
-
+        print("Store added to db")
         flash('Success! The new STORE was created successfully.')
-        return redirect(url_for('main.store_detail', store_id=new_store.id))
+        return redirect(url_for('main.homepage'))
+    else:
+        print(form.validate_on_submit())
+        print("NOT WORKING")
     # TODO: Send the form to the template and use it to render the form fields
     return render_template('new_store.html', form=form)
 

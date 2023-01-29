@@ -13,7 +13,7 @@ class GroceryStoreForm(FlaskForm):
     # - submit button
     title = StringField('Store Title', validators=[DataRequired()])
     address = StringField('Address')
-    submit = SubmitField('Submit Grocery Store')
+    submit = SubmitField('Submit')
 
 class GroceryItemForm(FlaskForm):
     """Form for adding/updating a GroceryItem."""
@@ -27,7 +27,7 @@ class GroceryItemForm(FlaskForm):
     # - submit button
     name = StringField('Name', validators=[DataRequired()])
     price = FloatField('Price', validators=[DataRequired()])
-    category = StringField('Category', choices=ItemCategory.choices())
+    category = SelectField('Category', choices=ItemCategory.choices())
     photo_url = StringField('Photo', validators=[DataRequired()])
     store = QuerySelectField('Stores', query_factory=lambda: GroceryStore.query)
-    submit = SubmitField('Submit Grocery Item')
+    submit = SubmitField('Submit')
