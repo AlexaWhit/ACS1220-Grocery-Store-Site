@@ -74,6 +74,10 @@ def store_detail(store_id):
     # TODO: Create a GroceryStoreForm and pass in `obj=store`
     form = GroceryStoreForm(obj=store)
 
+    # STRETCH - Add delete capability
+    if form.delete.data:
+        print('***ON THE RIGHT TRACK***')
+        return redirect(url_for('main.delete_store', store_id=store.id)) 
     # TODO: If form was submitted and was valid:
     # - update the GroceryStore object and save it to the database,
     # - flash a success message, and
@@ -95,6 +99,10 @@ def item_detail(item_id):
     # TODO: Create a GroceryItemForm and pass in `obj=item`
     form = GroceryItemForm(obj=item)
 
+    # STRETCH - Add delete capability
+    if form.delete.data:
+        return redirect(url_for('main.delete_item', item_id=item.id)) 
+
     # TODO: If form was submitted and was valid:
     # - update the GroceryItem object and save it to the database,
     # - flash a success message, and
@@ -110,3 +118,26 @@ def item_detail(item_id):
     # TODO: Send the form to the template and use it to render the form fields
     return render_template('item_detail.html', item=item, form=form)
 
+@main.route('/delete/<item_id>', methods=['GET', 'POST'])
+def delete_item(item_id):
+    item = GroceryItem.query.get(item_id)
+    # Stretch - delete the item
+    try:
+        db.session.delete(item)
+        db.session.commit()
+        flash('Successfully deleted {} item'.format(item))
+        return redirect(url_for('main.homepage'))
+    finally:
+        flash(' ')
+
+@main.route('/delete/<store_id>', methods=['GET', 'POST'])
+def delete_store(store_id):
+    store = GroceryStore.query.get(store_id)
+    # Stretch - delete the item
+    try:
+        db.session.delete(store)
+        db.session.commit()
+        flash('Successfully deleted {} store'.format(store))
+        return redirect(url_for('main.homepage'))
+    finally:
+        flash(' ')

@@ -14,6 +14,7 @@ class GroceryStoreForm(FlaskForm):
     title = StringField('Store Title', validators=[DataRequired()])
     address = StringField('Address')
     submit = SubmitField('Submit')
+    delete = SubmitField('Delete Store')
 
 class GroceryItemForm(FlaskForm):
     """Form for adding/updating a GroceryItem."""
@@ -31,3 +32,4 @@ class GroceryItemForm(FlaskForm):
     photo_url = StringField('Photo', validators=[DataRequired()])
     store = QuerySelectField('Stores', query_factory=lambda: GroceryStore.query)
     submit = SubmitField('Submit')
+    delete = SubmitField('Delete Item')
