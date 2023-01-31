@@ -14,17 +14,12 @@
 
 <h2>Edit Item</h2>
 
-<form>
+<form method="POST" action="{{ url_for('main.item_detail', item_id=item.id) }}">
     {{ form.csrf_token }}
     <fieldset>
         <legend>Please update the item information:</legend>
-        {{ form.name.label }} {{ form.name }}
-
-        <ul>
-          {% for error in form.errors %}
-          <li class="error">{{ error }}</li>
-          {% endfor %}
-        </ul>
+        {{ form.name.label }} 
+        {{ form.name }}
     
         {{ form.price.label }} 
         ${{ form.price }} 
