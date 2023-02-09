@@ -20,7 +20,7 @@ nav {
 }
 
 nav a {
-    color: navy;
+    color: rgb(113, 6, 145);
     text-decoration: none;
     border: 1px solid black;
     padding: 1px 5px;
@@ -45,6 +45,7 @@ fieldset input {
 input[type=submit] {
     width: 100px;
     align-self: flex-end;
+    background-color: darkmagenta;
 }
 
 div.store {

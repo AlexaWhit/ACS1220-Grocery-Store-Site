@@ -1,7 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Item - {{ item.name }}</h1>
+<h1>{{ item.name }}</h1>
+
+{% if current_user.is_authenticated %} 
+<form action="/add_shopping_list/{{ item.id }}" method="POST">
+    <input type="submit" value="Add to Shopping List">
+</form>
+
+
+<form action="/remove_shopping_list/{{ item.id }}" method="POST">
+    <input type="submit" value="Remove from Shopping List">
+</form>
+{% endif %}
+
 
 <p><img src="{{ item.photo_url }}" width="250px" height="250px"></p>
 

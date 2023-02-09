@@ -5,6 +5,14 @@
 
 <p><em>The best place to track prices and find the hottest deals!</em></p>
 
+
+<h2>Users</h2>
+<ul>
+    {% for user in all_users %}
+        <li><a href="/profile/{{ user.username }}">{{ user.username }}</a></li>
+    {% endfor %}
+</ul>
+
 <h2>All Stores</h2>
 
 {% for store in all_stores %}

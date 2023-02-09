@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>
+Welcome to {{ user.username }}'s profile.
+</p>
+
+<!-- TODO: Display the user's actual favorites here -->
+
+<p>
+    {{ user.username }}'s shopping list contains:
+
+    <ul>
+        {% for item in current_user.shopping_list %}
+        <li>{{ item.name }}</li>
+        {% endfor %}
+    </ul>
+    
+</p>
+
+{% endblock %}
